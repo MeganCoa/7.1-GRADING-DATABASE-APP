@@ -1,0 +1,32 @@
+package co.grandcircus71.GRADING.DATABASE.APP;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class HomeController {
+	
+	@Autowired
+	private GradesRepository repo;
+
+	@RequestMapping("/searchresults")
+	public String searchResults(Model model, @ModelAttribute("Search") String search) {
+    	try {
+			if (!(search.equals("")) && !(service.getPokemonByName(search.toLowerCase()) == null)) {
+				Pokemon searchPokemon = service.getPokemonInfo(service.getPokemonByName(search.toLowerCase()).getID());
+		        model.addAttribute("types", searchPokemon.getType());
+				model.addAttribute("search", service.getPokemonByName(search.toLowerCase()));
+				model.addAttribute("searchPokemon", searchPokemon);
+				
+				return "searchresults";
+			} else {
+				
+				return "redirect:searchresults";
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "redirect:searchresults";
+		}
+    }
+}

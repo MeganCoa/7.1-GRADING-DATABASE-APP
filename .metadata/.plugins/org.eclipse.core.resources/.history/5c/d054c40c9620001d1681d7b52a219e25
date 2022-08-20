@@ -1,0 +1,28 @@
+package co.grandcircus71.GRADING.DATABASE.APP;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Controller
+public class HomeController {
+	
+	@Autowired
+	private GradesRepository repo;
+
+	@RequestMapping("/")
+	public String home() {
+    
+			return "index";
+		}
+	@PostMapping("/gradeAdded")
+	public String addFavorite(@RequestParam String grade, Model model) {
+
+		return "/gradeAdded";
+	}
+    
+}

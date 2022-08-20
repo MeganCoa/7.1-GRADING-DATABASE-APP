@@ -1,0 +1,5 @@
+package co.grandcircus71.GRADING.DATABASE.APP.models;
+
+public class Grade {
+
+}

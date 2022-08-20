@@ -1,0 +1,20 @@
+package co.grandcircus71.GRADING.DATABASE.APP;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class HomeController {
+	
+	@Autowired
+	private GradesRepository repo;
+
+	@RequestMapping("/")
+	public String home() {
+    
+			return "index";
+		}
+    
+}
